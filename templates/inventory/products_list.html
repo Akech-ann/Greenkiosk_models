@@ -55,6 +55,7 @@
             cursor: pointer;
         }
     </style>
+    
 </head>
 <body>
     {% include "navbar.html" %}
@@ -66,7 +67,8 @@
                 <p class="product-description">{{ product.description }}</p>
                 <span class="product-price">Price: {{ product.price }}</span>
                 <a href="{% url 'product_detail_view' product.id %}" class="view-product-link"><button>View Product</button></a>
-                <a href="{% url 'product_edit_view' product.id %}" class="edit-product-link"><button>Add to cart</button></a>
+
+                <a href="{% url 'cart_list_view' %}" class="edit-product-link"><button>Add to cart</button></a>
             </div>
         {% endfor %}
     </div>

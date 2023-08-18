@@ -3,13 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Product Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        h4 {
+            color: #333;
+            margin: 10px 0;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px 0;
+        }
+
+        p {
+            color: #666;
+        }
+
+        span {
+            display: block;
+            color: #e44d26;
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button {
+            background-color: #e44d26;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #d1401a;
+        }
+    </style>
 </head>
 <body>
     <h4>{{product.name}}</h4>
-    <img src="{{ product.image.url }}" alt="Image">
+    <img src="{{ product.image.url }}" alt="Product Image">
     <p>{{product.description}}</p>
     <span>{{product.price}}</span>
-    <a href="{% url 'product_detail_view' product.id %}"><button>Add to Cart</button></a>
+    <a href="{% url 'cart_list_view' %}"><button>Add to Cart</button></a>
 </body>
 </html>
