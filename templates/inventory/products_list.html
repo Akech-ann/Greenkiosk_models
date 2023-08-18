@@ -7,17 +7,29 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
         }
 
         .products-container {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
+            padding: 20px;
         }
 
         .product-card {
+            background-color: #fff;
             border: 1px solid #ccc;
+            border-radius: 20px;
             padding: 15px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
         }
 
         .product-title {
@@ -28,6 +40,13 @@
         .product-image {
             max-width: 100%;
             height: auto;
+            background-color: #f4f4f4; /* Background color for images */
+            padding: 10px;
+        }
+        .image{
+            width: 80%;
+           border-radius: 20px;
+            
         }
 
         .product-description {
@@ -48,27 +67,28 @@
 
         .view-product-link button,
         .edit-product-link button {
-            background-color: #007bff;
+            background-color:rgb(60, 55, 29);
             color: #fff;
             border: none;
             padding: 5px 10px;
             cursor: pointer;
         }
     </style>
-    
 </head>
 <body>
     {% include "navbar.html" %}
     <div class="products-container">
         {% for product in products %}
             <div class="product-card">
+               
+                <div class="product-image">
+                    <img src="{{ product.image.url }}" alt="Image" class="image">
+                </div>
                 <h4 class="product-title">{{ product.name }}</h4>
-                <img class="product-image" src="{{ product.image.url }}" alt="Image">
                 <p class="product-description">{{ product.description }}</p>
                 <span class="product-price">Price: {{ product.price }}</span>
                 <a href="{% url 'product_detail_view' product.id %}" class="view-product-link"><button>View Product</button></a>
-
-                <a href="{% url 'cart_list_view' %}" class="edit-product-link"><button>Add to cart</button></a>
+                <a href="{% url 'cart_list_view' %}" class="edit-product-link"><button>Add to Cart</button></a>
             </div>
         {% endfor %}
     </div>

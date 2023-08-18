@@ -48,6 +48,9 @@
             border-radius: 5px;
             transition: background-color 0.3s ease;
         }
+        .img{
+            width: 20%;
+        }
 
         button:hover {
             background-color: #d1401a;
@@ -55,8 +58,9 @@
     </style>
 </head>
 <body>
+  
+    <img src="{{ product.image.url }}" alt="Product Image" class="img">
     <h4>{{product.name}}</h4>
-    <img src="{{ product.image.url }}" alt="Product Image">
     <p>{{product.description}}</p>
     <span>{{product.price}}</span>
     <a href="{% url 'cart_list_view' %}"><button>Add to Cart</button></a>
