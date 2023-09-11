@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "Ratings",
     "Cartmanager",
     "notifying_management",
+    "rest_framework",
 ]
 
 MIDDLEWARE = [

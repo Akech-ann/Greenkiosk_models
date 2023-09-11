@@ -6,32 +6,70 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'inventory/products_list.css' %}">
     <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        
+        .vendor-cards {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .vendor-card {
+            background-color: #fff;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 5px;
+            width: 300px;
+        }
+        
+        .vendor-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .vendor-info {
+            margin-bottom: 10px;
+        }
+        
+        .vendor-link {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        .vendor-link:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <table>
-        <tr>
-            <th>name</th>
-            <th>password</th>
-            <th>location</th>
-            <th>contact</th>
-            <th>storename</th>
-            <th>View vendor</th>
-            <th>Edit vendor</th>
-        </tr>
-        <tbody>
-            {% for vendor in vendors %}
-            <tr>
-                <td>{{ vendor.name }}</td>
-                <td>{{ vendor.password }}</td>
-                <td>{{ vendor.location }}</td>
-                <td>{{ vendor.contact }}</td>
-                <td>{{ vendor.storename }}</td>
-
-                <td><a href="{% url 'vendor_detail_view' id=vendor.id %}">View vendor detail</a></td>
-                <td><a href="{% url 'vendor_edit_view' id=vendor.id %}">Edit vendor</a></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="vendor-cards">
+        {% for vendor in vendors %}
+        <div class="vendor-card">
+            <div class="vendor-title">{{ vendor.name }}</div>
+            <div class="vendor-info">Password: {{ vendor.password }}</div>
+            <div class="vendor-info">Location: {{ vendor.location }}</div>
+            <div class="vendor-info">Contact: {{ vendor.contact }}</div>
+            <div class="vendor-info">Store Name: {{ vendor.storename }}</div>
+            <a href="{% url 'vendor_detail_view' id=vendor.id %}" class="vendor-link">View Vendor Detail</a>
+            <a href="{% url 'vendor_edit_view' id=vendor.id %}" class="vendor-link">Edit Vendor</a>
+        </div>
+        {% endfor %}
+    </div>
 </body>
 </html>

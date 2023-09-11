@@ -6,36 +6,68 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'inventory/products_list.css' %}">
     <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        
+        .shipment-cards {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .shipment-card {
+            background-color: #fff;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 5px;
+            width: 300px;
+        }
+        
+        .shipment-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .shipment-info {
+            margin-bottom: 10px;
+        }
+        
+        .shipment-link {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        .shipment-link:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-<table>
-        <tr>
-            <th>name</th>
-            <th>quantity</th>
-            <th>total</th>
-            <th>shipment details</th>
-            <th>Edit shipment</th>
-        </tr>
-    <tbody>
+    <div class="shipment-cards">
         {% for shipment in shipments %}
-        <tr>
-            <td>{{shipment.name}}</td>
-            <td>{{shipment.quantity}}</td>
-            <td>{{shipment.total}}</td>
-            
-
-            <td><a href = "{% url 'shipment_detail_view' id=shipment.id %}">View shipment</a></td>
-            <td><a href = "{% url 'shipment_edit_view' id=shipment.id %}">Edit shipment</a></td>
-       
-        </tr>
+        <div class="shipment-card">
+            <div class="shipment-title">{{ shipment.name }}</div>
+            <div class="shipment-info">Quantity: {{ shipment.quantity }}</div>
+            <div class="shipment-info">Total: {{ shipment.total }}</div>
+            <a href="{% url 'shipment_detail_view' id=shipment.id %}" class="shipment-link">View Shipment</a>
+            <a href="{% url 'shipment_edit_view' id=shipment.id %}" class="shipment-link">Edit Shipment</a>
+        </div>
         {% endfor %}
-    </tbody>
-</table>
+    </div>
 </body>
 </html>
-
-
-
-
-
-

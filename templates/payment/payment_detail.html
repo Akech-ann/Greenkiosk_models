@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {%  load static %}
+    <link rel="stylesheet" href=" {% static 'inventory/product_detail.css' %} ">
+    <style>
+        .detail {
+          background-color: #F9F9F9;
+          border: 1px solid #ddd;
+          padding: 10px;
+          margin: 10px;
+          border-radius: 5px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .detail h4 {
+          font-size: 1.5em;
+          margin: 0;
+          color: #333;
+        }
+        .detail p {
+          margin: 10px 0;
+          color: #555;
+        }
+        .detail span {
+          display: inline-block;
+          margin-top: 10px;
+          padding: 5px 10px;
+          background-color: #3498DB;
+          color: #fff;
+          border-radius: 3px;
+        }
+        .detail button a {
+          text-decoration: none;
+          color: #fff;
+        }
+        .detail button {
+          background-color: #3498DB;
+          color: #fff;
+          border: none;
+          padding: 10px 20px;
+          font-size: 1em;
+          cursor: pointer;
+          transition: background-color 0.3s;
+          border-radius: 3px;
+        }
+        .detail button:hover {
+          background-color: #2980B9;
+        }
+        </style>
+</head>
+<body>
+    <div class="detail">
+    <h4>{{payment.amount}}</h4>
+    <p>{{payment.receipt}} </p>
+    <span>{{payment.status}}</span><a href="/templates/payment/payment_list.html"></a>
+    <!-- <a href="{% url ''  %}"></a> -->
+    <button>  <a href="/templates/payment/payment_list.html"> Proceed </a> </button>
+    </div>
+</body>
+</html>
